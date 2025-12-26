@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ครูผู้ช่วย - สร้าง QR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>body { background: #EEF2FF; font-family: sans-serif; }</style>
+</head>
+<body class="p-10 text-center">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-3xl shadow-lg border-4 border-indigo-400">
+        <h1 class="text-xl font-bold mb-4">🛠️ เครื่องมือคุณครู</h1>
+        <input type="number" id="pts" value="10" class="w-full p-2 border-2 rounded-xl mb-4 text-center">
+        <button onclick="gen()" class="w-full bg-indigo-500 text-white p-3 rounded-xl font-bold">สร้าง QR รับแต้ม</button>
+        <div id="qrcode" class="mt-6 flex justify-center"></div>
+        <p id="label" class="mt-2 font-bold"></p>
+        <button onclick="window.print()" class="mt-4 text-xs underline">พิมพ์ QR</button>
+    </div>
+    <script>
+        const teacherSecret = "CUTE_TEACHER_2024";
+        let qr = new QRCode(document.getElementById("qrcode"), { width: 200, height: 200 });
+        function gen() {
+            const p = document.getElementById('pts').value;
+            qr.makeCode(teacherSecret + "_" + p);
+            document.getElementById('label').innerText = "สแกนรับ " + p + " แต้ม";
+        }
+        gen();
+    </script>
+</body>
+</html>
