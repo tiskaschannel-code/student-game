@@ -111,7 +111,7 @@
         }
 
         async function onScanSuccess(decodedText) {
-            const dataParts = decodedText.split("_");
+            const dataParts = decodedText.split(_);
             if (dataParts[0] === teacherSecret) {
                 const pointsToAdd = parseInt(dataParts[1]);
                 await sendToSheet(pointsToAdd, "รับแต้มจาก QR");
@@ -166,4 +166,5 @@
     </script>
 </body>
 </html>
+
 
